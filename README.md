@@ -18,9 +18,9 @@ This mod was created using the [psx-modding-toolchain by Redhot](https://github.
 
  -  **Popstarter VCD:** To learn about creating a VCD for Popstarter to run this mod on PS2, read [this](https://pastebin.com/YsypFwJS)
 
-## Building
+## Compiling & Building
 
-1. Building this mod requires the [psx-modding-toolchain by Redhot](https://github.com/mateusfavarin/psx-modding-toolchain). 
+1. Compiling this mod requires the [psx-modding-toolchain by Redhot](https://github.com/mateusfavarin/psx-modding-toolchain). 
 2. Once you have installed it and its pre-requisites, place the folder [from the source code download](https://github.com/C0mposer/Spyro-1-Gem-Redistributer-Mod/archive/refs/heads/main.zip), into the **/games/** folder of your psx-modding-toolchain directory.
 3. Browse to the **/mods/GemRedistributer/** directory, and open the MOD.bat file. From here you should be prompted with multiple options in a command line gui
 
