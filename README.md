@@ -39,7 +39,7 @@ This mod is created using the [psx-modding-toolchain by Redhot](https://github.c
 
  - [psx-modding-toolchain by Redhot](https://github.com/mateusfavarin/psx-modding-toolchain) for the automation of compiling C code to MIPS object code targeted for the PS1, and building a bin/cue with the mod files injected correctly.
  - [Bizhawk](https://github.com/TASEmulators/BizHawk) for searching/poking PS1 ram values easily
- - [PCSX-Redux](https://pcsx-redux.consoledev.net/) for hot-reloading mods in for quick testing. Also for its debugging features.
+ - [PCSX-Redux](https://github.com/grumpycoders/pcsx-redux/) for hot-reloading mods in for quick testing. Also for its debugging features.
  - [Ghidra](https://github.com/NationalSecurityAgency/ghidra) in combination with the [PSX Executable Loader Plugin](https://github.com/lab313ru/ghidra_psx_ldr) for reverse engineering functions in the game.
 
 ## Special Thanks
