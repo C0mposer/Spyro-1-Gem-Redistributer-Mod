@@ -49,7 +49,7 @@ This mod was created using the [psx-modding-toolchain by Redhot](https://github.
  - Redhot
  - OddKara
  - wafflewizard1
- - newantox
+ - Newantox
 
 ## Known Bugs
 
