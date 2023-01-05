@@ -7,7 +7,7 @@ This mod was created using the [psx-modding-toolchain by Redhot](https://github.
 
 ## Features
 
- -  **Randomly shuffles the gem values around in a level, with the other gem values in the same level.**. This doesn't just randomize them, it takes into account the gems that already exist in a level, and just moves them around to other gems! That way, the weighting of each levels gem total should be the same.
+ -  **Randomly shuffles the gem values around in a level, with the other gem values in the same level**. This doesn't just randomize them, it takes into account the gems that already exist in a level, and just moves them around to other gems! That way, the weighting of each levels gem total should be the same.
  -  **Seeding menu so you can randomize/replay seeds as you wish**.
  -  **Quick Reset to "The Adventure Begins"** by pressing "L1 + L2 + R1 + R2 + Triangle"
 
