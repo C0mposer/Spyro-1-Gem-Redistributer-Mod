@@ -28,13 +28,13 @@ This mod was created using the [psx-modding-toolchain by Redhot](https://github.
 	
 	1. First press 1 to compile, then 1 again for the NTSC version.
 	2. After it has compiled, press 4 for "Build Iso", then press 1 for the NTSC version.
-	3. After it has built, your bin/cue should be in Spyro1/build/
+	3. After it has built, your bin/cue should be in /build/
 
 #### Generating xdelta patch
 	
 	5. First press 1 to compile, then 1 again for the NTSC version.
 	6. After it has compiled, press 5 for "Generate xdetla Patch", then press 1 for the NTSC version.
-	7. After it has built, your xdelta patch should be in Spyro1/build/
+	7. After it has built, your xdelta patch should be in /build/
 	
 
 ## Tools used in creation
