@@ -1,0 +1,8 @@
+NTSC, exe, 0x80033e38, 0x0, asm/hook_cd.s
+NTSC, header, 0x8000B0B8, 0x0, src/cd_load.c
+NTSC, kernal, 0x8000C000, 0x0, src/GemRedistributer.c src/cutscene.c ./../../common/my_math.c ./../../common/moby.c ./../../common/custom_text.c, mod.bin
+
+ReduxTestCDMod, exe, 0x80033e38, 0x0, asm/hook.s
+ReduxTestCDMod, kernal, 0x8000C000, 0x0, src/GemRedistributer.c src/cutscene.c ./../../common/my_math.c ./../../common/moby.c ./../../common/custom_text.c, mod.bin
+
+
