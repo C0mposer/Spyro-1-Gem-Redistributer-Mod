@@ -26,14 +26,14 @@ This mod was created using the [psx-modding-toolchain by Redhot](https://github.
 
 #### Building bin/cue
 	
-	1. First press 1 to compile, then 1 again for the NTSC version.
-	2. After it has compiled, press 4 for "Build Iso", then press 1 for the NTSC version.
+	1. First type 1 then press enter to compile, then, type 1 then press enter again for the NTSC version.
+	2. After it has compiled, type 4 then enter for "Build Iso", then, type 1 then press enter for the NTSC version.
 	3. After it has built, your bin/cue should be in /build/
 
 #### Generating xdelta patch
 	
-	5. First press 1 to compile, then 1 again for the NTSC version.
-	6. After it has compiled, press 5 for "Generate xdetla Patch", then press 1 for the NTSC version.
+	1. First type 1 then press enter to compile, then, type 1 then press enter again for the NTSC version.
+	6. After it has compiled, type 5 then press enter for "Generate xdetla Patch", then type 1 then press enter for the NTSC version.
 	7. After it has built, your xdelta patch should be in /build/
 	
 
