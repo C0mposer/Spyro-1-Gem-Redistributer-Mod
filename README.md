@@ -1,7 +1,7 @@
 # Spyro Gem Redistributer
 
 A mod for the original Spyro the Dragon That shuffles gem values around to other gems!
-This mod is created using the [psx-modding-toolchain by Redhot](https://github.com/mateusfavarin/psx-modding-toolchain). 
+This mod was created using the [psx-modding-toolchain by Redhot](https://github.com/mateusfavarin/psx-modding-toolchain). 
 
 ## Features
 
