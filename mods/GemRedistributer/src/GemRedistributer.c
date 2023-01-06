@@ -366,6 +366,7 @@ void mainFunc()
         TheAdventureBegins();
     }
     
+    
     //*~~~ UPDATES ~~~
     UpdateFlags();
 }
