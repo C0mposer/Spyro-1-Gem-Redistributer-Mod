@@ -134,7 +134,7 @@ void SelectSeed()
         customMenuTimer++;
 }
 
-
+//* Function used to parse the gem data from all the relavent moby's in the level
 void ParseGemData(void)
 {
         int amountOfMobysInLevel = (*(_ptr_levelMobys - 2) / MOBY_SIZE);                //?? ptr_levelMobys - 2 representing the address for number of bytes that the moby region for the level is taking up.
@@ -209,15 +209,15 @@ void ParseGemData(void)
                 }
             }
         }
-        printf("Amount of Total Physical Gems: %D\n\nAmount of Gem Mobys: %D\n\nAmount of Held Gems: %D\n\nAmount of One Gems: %D\nAmount of Two Gems: %D\nAmount of Five Gems: %D\nAmount of Ten Gems: %D\nAmount of Twenty Five Gems: %D\n\n", totalAmountOfPhysicalGems, amountOfGemMobys, amountOfHeldGems, amountOfRedGems, amountOfGreenGems, amountOfBlueGems, amountOfYellowGems, amountOfPinkGems); 
-        amountOfGemMobys = 0;
-        amountOfHeldGems = 0;
-        totalAmountOfPhysicalGems = 0; //?? Pretty sure all of these are used for the printf and nothing else?
+        //printf("Amount of Total Physical Gems: %D\n\nAmount of Gem Mobys: %D\n\nAmount of Held Gems: %D\n\nAmount of One Gems: %D\nAmount of Two Gems: %D\nAmount of Five Gems: %D\nAmount of Ten Gems: %D\nAmount of Twenty Five Gems: %D\n\n", totalAmountOfPhysicalGems, amountOfGemMobys, amountOfHeldGems, amountOfRedGems, amountOfGreenGems, amountOfBlueGems, amountOfYellowGems, amountOfPinkGems); 
+        //amountOfGemMobys = 0;
+        //amountOfHeldGems = 0;
+        //totalAmountOfPhysicalGems = 0; 
 
-        hasParsedLevelGemData = TRUE;
+        hasParsedLevelGemData = TRUE;                                   //? When finished parsing, set hasParsedLevelGemData to true so it doesn't run again
 }
 
-
+//* Function used to replace the gem data in all the relavent moby's with the redistributed values
 void ReplaceGemData(void)
 {
         int amountOfMobysInLevel = (*(_ptr_levelMobys - 2) / MOBY_SIZE); //?? ptr_levelMobys - 2 representing the address for number of bytes that the moby region for the level is taking up.
@@ -242,7 +242,7 @@ void ReplaceGemData(void)
                 currentStruct->heldValue = ONE_GEM_HELD_ID + gemOffest;
             }
         }
-        printf("~~~ TEST TO SEE IF REPLACED ALL ~~~\nOne Gems Left to Replace: %D\nTwo Gems Left to Replace: %D\nFive Gems Left to Replace: %D\nTen Gems Left to Replace: %D\nTwenty Five Gems Left to Replace: %D\n", amountOfRedGems, amountOfGreenGems, amountOfBlueGems, amountOfYellowGems, amountOfPinkGems); 
+        //printf("~~~ TEST TO SEE IF REPLACED ALL ~~~\nOne Gems Left to Replace: %D\nTwo Gems Left to Replace: %D\nFive Gems Left to Replace: %D\nTen Gems Left to Replace: %D\nTwenty Five Gems Left to Replace: %D\n", amountOfRedGems, amountOfGreenGems, amountOfBlueGems, amountOfYellowGems, amountOfPinkGems); 
         hasReplacedLevelGems = TRUE;
 }
 
@@ -256,8 +256,8 @@ int ReturnRandomGemOffset(void)
     {
         char fiveSidedDice = rand() % 5;    //?Set random number between 0-4. This represets each possible gem type. Red-Pink.
 
-        //This code below checks the value of the fiveSidedDice, and also checks of its equivilent "amountOf____Gems" value  has any gems left to redistrubute. 
-        //If not, it re-rolls. If it does, it decreases the amount of specific gem type left to distrubted, and returns the offset from the dice.
+        //? This code below checks the value of the fiveSidedDice, and also checks if its equivilent "amountOf____Gems" value has any gems left to redistrubute. 
+        //? If not, it re-rolls. If it does, it decreases the amount of specific gem type left to distrubted, and returns the offset from the dice.
         if(amountOfRedGems && fiveSidedDice == 0)
         {
             amountOfRedGems--;
@@ -289,19 +289,19 @@ int ReturnRandomGemOffset(void)
 
         }
 
-        if(hasFoundAvailbleGem)
+        if(hasFoundAvailbleGem)                                                     //? If a gem to be redistributed has been found
         {
             gemValueOffset = fiveSidedDice;
-            return gemValueOffset;
+            return gemValueOffset;                                                  //? Return the required offset to add to the default red gem (0x53)
         }
     }
 }
 
-
+//* Function used to update the required booleans when need be
 void UpdateFlags(void)
 {
     
-    //* Main Resets:
+    //* ~~Main Resets~~:
 
     //* This is the main statement that checks if it needs to do another run through of checking/setting gems 
     if(hasSeedChanged)                                                                                      
@@ -319,7 +319,7 @@ void UpdateFlags(void)
         hasRanFirstSeed = TRUE;                                                 //? Never run this again
     }
 
-    //* Level Entry/Exit/Balloonist/Death Resets:
+    //* ~~Level Entry/Exit/Balloonist/Death Resets~~:
 
     //* This is the code that checks if you have died/re-entered a level, so that we can redistribute again once
     if(!hasReplacedAfterEntry && (_glideSubState == 0x9 || _glideSubState == 0xA || _glideSubState == 0xB || _ballonistState == 0x6 || (_spyro.canInput != 0 && _effect_ScreenFadeIn != 0)))
@@ -338,8 +338,7 @@ void UpdateFlags(void)
 
 }
 
-
-
+//* ~~Main Hook~~
 void mainFunc()
 {
     //*If hasn't selected seed yet, and is in artisans
