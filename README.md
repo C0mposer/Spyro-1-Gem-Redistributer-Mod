@@ -1,19 +1,21 @@
 
+
 # Spyro Gem Redistributer
 
 A mod for the original Spyro the Dragon that shuffles gem values in a level around to other gems in the same level! Come up with any% routes on the fly, knowing where none of the high value gems will be beforehand!
 
 This mod was created using the [psx-modding-toolchain by Redhot](https://github.com/mateusfavarin/psx-modding-toolchain). 
 
-## Features
+### Features
 
  -  **Randomly shuffles the gem values around in a level, with the other gem values in the same level**. This doesn't just randomize them, it takes into account the gems that already exist in a level, and just moves them around to other gems! That way, the weighting of each levels gem total should be the same.
  -  **Seeding menu so you can randomize/replay seeds as you wish**.
  -  **Quick Reset to "The Adventure Begins"** by pressing "L1 + L2 + R1 + R2 + Triangle"
 
 ## Downloads
-
+#### Main Download
  -  **Download Patch**: Download the main [xdelta patch here](https://github.com/C0mposer/Spyro-1-Gem-Redistributer-Mod/releases/download/beta/spyro1_GemRedistributer.xdelta), then your personal Spyro 1 bin file can be [patched here](https://hack64.net/tools/patcher.php)
+ #### Other Downloads
  -  **CUE File**: Some emulators will require you to have a cue file to go along with this bin file, if you need one, you can create a cue for your patched bin [here](https://www.duckstation.org/cue-maker/)
 
  -  **Popstarter VCD:** To learn about creating a VCD for Popstarter to run this mod on PS2, read [this](https://pastebin.com/YsypFwJS)
