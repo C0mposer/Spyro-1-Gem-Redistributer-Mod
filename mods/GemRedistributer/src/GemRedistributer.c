@@ -300,7 +300,6 @@ int ReturnRandomGemOffset(void)
 //* Function used to update the required booleans when need be
 void UpdateFlags(void)
 {
-    
     //* ~~Main Resets~~:
 
     //* This is the main statement that checks if it needs to do another run through of checking/setting gems 
