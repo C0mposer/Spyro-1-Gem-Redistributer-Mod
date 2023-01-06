@@ -15,7 +15,7 @@ This mod was created using the [psx-modding-toolchain by Redhot](https://github.
 
 ## Downloads
 #### Main Download
- -  **Download Patch**: Download the main [xdelta patch here](https://github.com/C0mposer/Spyro-1-Gem-Redistributer-Mod/releases/download/beta/spyro1_GemRedistributer.xdelta), then your personal Spyro 1 bin file can be [patched here](https://hack64.net/tools/patcher.php)
+ -  **Download Patch**: Download the main [xdelta patch here](https://github.com/C0mposer/Spyro-1-Gem-Redistributer-Mod/releases/download/beta0.4/spyro1_GemRedistributer.xdelta), then your personal Spyro 1 bin file can be [patched here](https://hack64.net/tools/patcher.php)
  #### Other Downloads
  -  **CUE File**: Some emulators will require you to have a cue file to go along with this bin file, if you need one, you can create a cue for your patched bin [here](https://www.duckstation.org/cue-maker/)
 
