@@ -147,5 +147,10 @@ bool PlayCustomCutscene(void)
     customCameraTimer++;                                                                                            //? Updating the camera timer every frame for the animation.
     randomGemSlowdownTimer++;                                                                                       //? Updating the timer that is used to run the visual randomization every OTHER frame. This gets % 2.
 
-    return hasFinished;                                                                                             //? Returns true when it is done
+    bool hasFinishedTemp = hasFinished;                                                                             //? 
+    hasFinished = FALSE;
+
+    return hasFinishedTemp;                                                                                         //? Returns true when it is done
+
+
 }
