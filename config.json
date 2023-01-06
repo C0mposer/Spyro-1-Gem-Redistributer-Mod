@@ -15,20 +15,18 @@
             "symbols": 
             [
                 "symbols.txt",
-                "gemhuntSymbols.txt",
                 "funcs.txt"
             ],
             "build_id": 94228
         }
     },
     {
-        "CodeFromCDForRedux": 
+        "ReduxTestCDMod": 
         {
             "name": "spyro1.bin",
             "symbols": 
             [
                 "symbols.txt",
-                "gemhuntSymbols.txt",
                 "funcs.txt"
             ],
             "build_id": 94231
@@ -41,7 +39,6 @@
             "symbols": 
             [
                 "symbols.txt",
-                "gemhuntSymbols.txt",
                 "funcs.txt"
             ],
             "build_id": 94230
