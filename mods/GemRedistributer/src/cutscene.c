@@ -13,15 +13,15 @@ extern bool hasSeedChanged;
 
 bool PlayCustomCutscene(void)
 {
-    static bool hasFinished = FALSE;
-    static bool hasSavedCameraData = FALSE;
-    static bool shouldMoveCamera = FALSE;
+    static bool hasFinished = FALSE;                                                                                            //? Will be used to determine if the cutscene has completed
+    static bool hasSavedCameraData = FALSE;                                                                                     //? Will be used to determine if the camera data has been saved
+    static bool shouldMoveCamera = FALSE;                                                                                       //? Will be used to determine if the camera cutscene should start
 
-    static char customDirection = 0;
-    static int customCameraTimer = 0;
-    static int randomGemSlowdownTimer = 0;
+    static char customDirection = 0;                                                                                            //? Will be used to determine the direction of the cutscene.
+    static int customCameraTimer = 0;                                                                                           //? Timer to be used for animating the cutscene
+    static int randomGemSlowdownTimer = 0;                                                                                      //? Timer to be used for slowing down the gem randomization
 
-    static unsigned short seedBackup = 0;
+    static unsigned short seedBackup = 0;                                                                                       //? Will be used to restore the chosed seed after the gem randomization part of the cutscene
 
     static Vec3 animatedPosition = {0};                                                                                         //? Will be used to store the lerped position vector
     static CameraAngle animatedAngle = {0};                                                                                     //? Will be used to store the lerped angle vector
@@ -147,8 +147,8 @@ bool PlayCustomCutscene(void)
     customCameraTimer++;                                                                                            //? Updating the camera timer every frame for the animation.
     randomGemSlowdownTimer++;                                                                                       //? Updating the timer that is used to run the visual randomization every OTHER frame. This gets % 2.
 
-    bool hasFinishedTemp = hasFinished;                                                                             //? 
-    hasFinished = FALSE;
+    bool hasFinishedTemp = hasFinished;                                                                             //? 1-5-23 11:30PM = Created a temp variable to return the result of hasFinished
+    hasFinished = FALSE;                                                                                            //? 1-5-23 11:30PM = Because hasFinished needs to get set to FALSE so it can run again if the player resets.
 
     return hasFinishedTemp;                                                                                         //? Returns true when it is done
 
