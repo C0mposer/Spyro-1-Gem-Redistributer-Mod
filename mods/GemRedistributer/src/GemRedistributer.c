@@ -7,7 +7,6 @@
 #include <filters.h>
 #include <custom_text.h>
 
-
 //* ~~~ Global Flags ~~~
 
 bool hasParsedLevelGemData = FALSE;     //? This is the flag that determines if ParseLevelGemData can run.
@@ -17,7 +16,6 @@ bool hasSeedChanged = FALSE;            //? This flag determines if the seed has
 bool hasRanFirstSeed = FALSE;           //? This flag determines if used to run the code once when you load in with seed 0, since it will have never been "changed"
 bool shouldPlayCutscene = FALSE;        //? This flag determines if PlayCustomCutscene can run.
 bool hasReplacedAfterEntry = FALSE;     //? This flag determines if the required flags have been set after dying/re-entering a level. Is used to make sure the code runs once afterwards.
-
 
 //* ~~~ Global Variables ~~~
 
