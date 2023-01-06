@@ -26,7 +26,7 @@ This mod was created using the [psx-modding-toolchain by Redhot](https://github.
 2. Once you have installed it and its pre-requisites, place the folder [from the source code download](https://github.com/C0mposer/Spyro-1-Gem-Redistributer-Mod/archive/refs/heads/main.zip), into the **/games/** folder of your psx-modding-toolchain directory.
 3. Browse to the **/mods/GemRedistributer/** directory, and open the MOD.bat file. From here you should be prompted with multiple options in a command line gui
 
-#### Building bin/cue
+#### Building BIN/CUE
 	
 	1. First type 1 then press enter to compile, then, type 1 then press enter again for the NTSC version.
 	2. After it has compiled, type 4 then enter for "Build Iso", then, type 1 then press enter for the NTSC version.
@@ -39,7 +39,7 @@ This mod was created using the [psx-modding-toolchain by Redhot](https://github.
 	7. After it has built, your xdelta patch should be in /build/
 	
 
-## Tools used in creation
+## Tools Used In Creation
 
  - [psx-modding-toolchain by Redhot](https://github.com/mateusfavarin/psx-modding-toolchain) for the automation of compiling C code to MIPS object code targeted for the PS1, and building a bin/cue with the mod files injected correctly.
  - [Bizhawk](https://github.com/TASEmulators/BizHawk) for searching/poking PS1 ram values easily
