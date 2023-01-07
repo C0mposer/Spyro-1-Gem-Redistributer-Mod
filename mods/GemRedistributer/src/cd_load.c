@@ -34,7 +34,7 @@ void CdMain(){
 	if (!isInitialised)
         init(); //Begin the code loading process
 	else
-        mainFunc(); //Run the main Loop of the loaded code
+        MainFunc(); //Run the main Loop of the loaded code
 }
 
 
