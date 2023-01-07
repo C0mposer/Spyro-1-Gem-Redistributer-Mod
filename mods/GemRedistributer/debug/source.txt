@@ -1,0 +1,14 @@
+debug/obj/hook_cd.o asm/hook_cd.o
+debug/dep/hook_cd.dep asm/hook_cd.dep
+debug/obj/cd_load.o src/cd_load.o
+debug/dep/cd_load.dep src/cd_load.dep
+debug/obj/GemRedistributer.o src/GemRedistributer.o
+debug/dep/GemRedistributer.dep src/GemRedistributer.dep
+debug/obj/cutscene.o src/cutscene.o
+debug/dep/cutscene.dep src/cutscene.dep
+debug/obj/my_math.o ./../../common/my_math.o
+debug/dep/my_math.dep ./../../common/my_math.dep
+debug/obj/moby.o ./../../common/moby.o
+debug/dep/moby.dep ./../../common/moby.dep
+debug/obj/custom_text.o ./../../common/custom_text.o
+debug/dep/custom_text.dep ./../../common/custom_text.dep

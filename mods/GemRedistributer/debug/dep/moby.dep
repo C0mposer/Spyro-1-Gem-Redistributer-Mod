@@ -1,0 +1,6 @@
+../../common/moby.o: ../../common/moby.c \
+ c:\users\torbo\onedrive\documents\decomp\ps1\psx-modding-toolchain-main\games\spyro1_gem_redistributer\include\moby.h \
+ c:\users\torbo\onedrive\documents\decomp\ps1\psx-modding-toolchain-main\games\spyro1_gem_redistributer\include\common.h \
+ c:\users\torbo\onedrive\documents\decomp\ps1\psx-modding-toolchain-main\games\spyro1_gem_redistributer\include\custom_types.h \
+ c:\users\torbo\onedrive\documents\decomp\ps1\psx-modding-toolchain-main\games\spyro1_gem_redistributer\include\spyro.h \
+ c:\users\torbo\onedrive\documents\decomp\ps1\psx-modding-toolchain-main\games\spyro1_gem_redistributer\include\common.h

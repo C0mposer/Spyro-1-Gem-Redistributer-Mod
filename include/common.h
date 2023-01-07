@@ -294,7 +294,6 @@ int DrawTextAll(char *text, int *CapitalTextInfo, int *LowercaseTextInfo, int sp
 int DrawTextBox(int leftBoundaryDistanceFromLeft, int RightBoundaryDistanceFromLeft, int TopBoundaryDistanceFromTop, int BottomBoundaryDistanceFromTop); //? This function draws a textbox with gold lines around it.
 void DrawArrow(int *MobyInfo, unsigned int timer, int arrowDirection);                                  //? This function draws an arrow either to the left or rigt.
 void DrawLine(int point1X, int point1Y, int point2X, int point2Y);                                      //? This function draws a yellow line.
-void DrawOpaqueShape(struct OpaqueShapeInfo* shapeInfo);                                                //? This function draws a shape using custom parameters. Use my CustomDrawOpaqueShape if you want to do this.
 void FillScreenColor(int colorSpace, char r, char g, char b);                                           //? Fills the screen with a specific color.
 
 //Pre-Reqs for other functions
