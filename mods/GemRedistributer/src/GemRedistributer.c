@@ -243,7 +243,7 @@ void ReplaceGemData(void)
             }
         }
                 
-        //* Removed Debug Printing
+        //* Removed Debug
 
         //printf("~~~ TEST TO SEE IF REPLACED ALL ~~~\nOne Gems Left to Replace: %D\nTwo Gems Left to Replace: %D\nFive Gems Left to Replace: %D\nTen Gems Left to Replace: %D\nTwenty Five Gems Left to Replace: %D\n", amountOfRedGems, amountOfGreenGems, amountOfBlueGems, amountOfYellowGems, amountOfPinkGems); 
 
