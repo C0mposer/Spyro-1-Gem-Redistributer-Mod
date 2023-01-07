@@ -342,7 +342,7 @@ void UpdateFlags(void)
 }
 
 //* ~~Main Hook~~
-void mainFunc()
+void MainFunc()
 {
     //*If hasn't selected seed yet, and is in artisans
     if(_gameState == GAMESTATE_GAMEPLAY && _levelID == ARTISANS_ID && !hasSelectedSeed)

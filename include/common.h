@@ -334,7 +334,7 @@ extern bool _canFlyIn; //0x800756D0                          //? 1 If can fly in
 extern bool _isPastTitleScreen; //0x8007566c                 //? 1 If has started new game/continue game. Basically after you leave the title screen this is always 1.
 
 //Timers
-extern int _globalTimer; //0x800749e0                        //? This is the global timer. It is running at all times.                
+extern int _globalTimer; //0x800749e0                        //? This is the global timer. It is running at all times from game boot up past BIOS.                
 extern int _pausedTimer; //0x800758B8                        //? This is the pause/inventory menu timer. It is only running in those menus.
 extern int _levelTimerWhenActive; //0x8007572C               //? This is a level specific timer. This timer is running when when you are able to control spyro, and doesn't reset until you enter a new level.
 extern int _levelTimer_60fps; //0x800758C8                   //? This is a level specific timer that runs at 60fps. This timer is running at all times, and doesn't reset until you enter a new level.
