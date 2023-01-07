@@ -1,3 +1,0 @@
-asmhook_cds 0x28d80
-srccd_loadc 0x0
-mod 0xf48
