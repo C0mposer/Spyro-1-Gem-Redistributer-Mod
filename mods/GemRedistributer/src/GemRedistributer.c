@@ -1,10 +1,9 @@
 #include <custom_types.h>
 #include <common.h>
+#include <my_math.h>
 #include <spyro.h>
 #include <moby.h>
-#include <my_math.h>
 #include <sound.h>
-#include <filters.h>
 #include <custom_text.h>
 
 //* ~~~ Global Flags ~~~
@@ -365,7 +364,7 @@ void mainFunc()
         chosenSeed = 0;
         TheAdventureBegins();
     }
-    
+
     
     //*~~~ UPDATES ~~~
     UpdateFlags();
