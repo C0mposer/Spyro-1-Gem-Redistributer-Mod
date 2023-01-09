@@ -311,7 +311,6 @@ void UpdateFlags(void)
     //* This checks if you have fully re-entered the level, so that next time we have to redistribute we can
     if(hasReplacedAfterEntry && _movementSubState != MOVEMENT_SUBSTATE_EXIT_PORTAL && _movementSubState != MOVEMENT_SUBSTATE_FLY_IN_LOOP && _movementSubState != MOVEMENT_SUBSTATE_FLY_IN_CAMERA_180 && _gameState != GAMESTATE_BALLOONIST && (_spyro.isMovementLocked == FALSE && _effect_ScreenFadeIn == 0))
     {
-        printf("TEST\n");
         hasReplacedAfterEntry = FALSE;
     }
 
