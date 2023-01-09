@@ -6,9 +6,13 @@
 #include <custom_text.h>
 #include <moby.h>
 #include <sound.h>
+#include <GemRedistributer.h>
 
+
+//* Globals from GemRedistributer.h
 extern unsigned short chosenSeed;
 extern bool hasSeedChanged;
+
 
 bool PlayCustomCutscene(void)
 {
@@ -51,7 +55,7 @@ bool PlayCustomCutscene(void)
     //* Cutscene Animation Loop
     if (shouldMoveCamera)
     {       
-        _spyro.isMovementLocked = TRUE;                                                                                     //? Forces the player to not be able to move spyro
+        _spyro.isMovementLocked = TRUE;                                                                                         //? Forces the player to not be able to move spyro
 
         _shouldCameraFollowSpyro = DONT_FOLLOW_SPYRO;                                                                           //? NOP's the call to SpyroCamera() to allow the camera to be free
 

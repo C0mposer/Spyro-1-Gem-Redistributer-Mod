@@ -33,7 +33,7 @@ _isPastTitleScreen = 0x8007566c;
 
 _ballonistState = 0x800777e8;
 
-_glideSubState = 0x80078AD4;
+_movementSubState = 0x80078AD4;
 _flyInAnimation = 0x80076EA8;
 _fullyPaused = 0x801ffe64;
 _flightWingsAnimation = 0x80078CA4;

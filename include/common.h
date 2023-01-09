@@ -58,6 +58,27 @@ enum GameStates
     GAMESTATE_CREDITS = 0xF
 };
 
+enum MovementSubStates
+{
+    MOVEMENT_SUBSTATE_LOADING = 0x8,
+    MOVEMENT_SUBSTATE_EXIT_PORTAL = 0x9,
+    MOVEMENT_SUBSTATE_FLY_IN_LOOP = 0xA,
+    MOVEMENT_SUBSTATE_FLY_IN_CAMERA_180 = 0xA
+};
+
+enum BalloonistStates
+{
+    BALLOONIST_STATE_NEVER_TALKED_TO_BALLOONIST = 0x0,
+    BALLOONIST_STATE_TEXTBOX = 0x1,
+    BALLOONIST_STATE_JUMPING_ONTO_BALLOON = 0x2,
+    BALLOONIST_STATE_BALLOON_RISING = 0x3,
+    BALLOONIST_STATE_BALLOON_LOADING_PART_1 = 0x4,
+    BALLOONIST_STATE_BALLOON_LOADING_PART_2 = 0x5,
+    BALLOONIST_STATE_BALLOON_LOWERING = 0x6,
+    BALLOONIST_STATE_JUMPING_OUT_OF_BALLOON = 0x7
+
+};
+
 enum SpyroHealthStates
 {
     YELLOW_SPARX = 3,
@@ -348,7 +369,7 @@ extern int _secondController; //0x80078E50                   //! STILL RESEARCHI
 //Analog Sticks in analog_sticks.h
 
 extern Spyro _spyro; //0x80078A58                            //? Start of the Spyro Struct
-extern int _glideSubState; //0x80078AD4                      //? Research this more. 0xA is the loop for example.
+extern int _movementSubState; //0x80078AD4                   //? Research this more. 0xA is the loop for example.
 extern int _isInPortal; //0x80078C70                         //? 0x5 for in portal, 0xF for loading afterwards. Stays on 0xF until next portal.
                                                              //! MIGHT BE PART OF SPYTO STRUCT. RESEARCH PLZ
 extern int _totalGlobalGems; //0x80075860;                   //? Total amount of global gems
@@ -381,8 +402,8 @@ extern char _collectablesStateArray[1231]; //0x80077900      //? The array for w
 extern int* _ptr_levelMobys; //0x80075828                    //? This is a pointer to the start of the level moby's array.
 extern int* _ptr_dynamicLevelMobys; //0x8007573C             //? This is a pointer to the start of the dynamic level moby's array.
 
-extern int* _ptr_levelMobyData;                              //? This is a pointer to the start of the level moby's data array.
-#define _ptr_levelMobyData _ptr_endDynamicMobys //0x80075930  //? Just giving it another name, since it also could be used to indicate the end of dynamic mobys, instead of just being used to indicate the start of levelMobyData.
+extern int* _ptr_levelMobyData; //0x80075930                 //? This is a pointer to the start of the level moby's data array.
+#define _ptr_levelMobyData _ptr_endDynamicMobys //0x80075930 //? Just giving it another name, since it also could be used to indicate the end of dynamic mobys, instead of just being used to indicate the start of levelMobyData.
 
 extern int _ptr_graphicsRelated; //0x800757b0                //? Not too sure.
 extern int _ptrTextUnk; //0x800720f4                         //? Not too sure.

@@ -7,8 +7,6 @@
 #include <sound.h>
 #include <custom_text.h>
 
-//* ~~~ Functions ~~~
-
 //* Function for menu to select/randomize seed
 void SelectSeed()
 {
@@ -30,7 +28,7 @@ void SelectSeed()
         if(_currentButtonOneFrame == LEFT_BUTTON && chosenSeed > 0)                                             //? If the player pressed left, and the seed greater than 0, the minimum
         {
             chosenSeed--;                                                                                       //? Decrement the seed by 1, once (since it checked currentButtonOneFrame)
-            PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, 0, SOUND_PLAYBACK_MODE_NORMAL, 0);                      //? Play a sound effect for the selection             
+            PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, NULL, SOUND_PLAYBACK_MODE_NORMAL, 0);                   //? Play a sound effect for the selection             
             customMenuTimer = 0;                                                                                //? Reset the timer for the increment/decrement speed up later
         }
 
@@ -41,14 +39,14 @@ void SelectSeed()
             if(customMenuTimer > 1*SECONDS)                                                                     //? If the player is holding left for 1 second
             {
                 chosenSeed--;                                                                                   //? Decrement the seed by 1 every frame
-                PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, 0, SOUND_PLAYBACK_MODE_NORMAL, 0);                  //? Play sound effect for each decrement
+                PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, NULL, SOUND_PLAYBACK_MODE_NORMAL, 0);               //? Play sound effect for each decrement
             }
 
             //* Faster Setting
             else if(customMenuTimer > 3*SECONDS)                                                                //? If the player is holding left for 3 seconds
             {
                 chosenSeed = chosenSeed - 61;                                                                   //? Decrement the seed by 61 every frame. 61 because even numbers look too uniform lol
-                PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, 0, SOUND_PLAYBACK_MODE_NORMAL, 0);                  //? Play sound effect for each decrement
+                PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, NULL, SOUND_PLAYBACK_MODE_NORMAL, 0);               //? Play sound effect for each decrement
             }
         }
 
@@ -56,7 +54,7 @@ void SelectSeed()
         if(_currentButtonOneFrame == RIGHT_BUTTON && chosenSeed < 0x7FFF)                                       //? If the player pressed right, and the seed is not 32727, the maximum
         {
             chosenSeed++;                                                                                       //? Increment the seed by 1, once (since it checked currentButtonOneFrame)
-            PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, 0, SOUND_PLAYBACK_MODE_NORMAL, 0);                      //? Play a sound effect for the selection             
+            PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, NULL, SOUND_PLAYBACK_MODE_NORMAL, 0);                   //? Play a sound effect for the selection             
             customMenuTimer = 0;                                                                                //? Reset the timer for the increment/decrement speed up later
         }
 
@@ -67,14 +65,14 @@ void SelectSeed()
             if(customMenuTimer > 1*SECONDS)                                                                     //? If the player is holding right for 1 second
             {
                 chosenSeed++;                                                                                   //? Incriment the seed by 1 every frame
-                PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, 0, SOUND_PLAYBACK_MODE_NORMAL, 0);                  //? Play sound effect for each incriment
+                PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, NULL, SOUND_PLAYBACK_MODE_NORMAL, 0);               //? Play sound effect for each incriment
             }
                 
             //* Faster Setting
             else if(customMenuTimer > 5*SECONDS)
             {
                 chosenSeed = chosenSeed + 61;                                                                   //? Incriment the seed by 61 every frame. 61 because even numbers look too uniform lol
-                PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, 0, SOUND_PLAYBACK_MODE_NORMAL, 0);                  //? Play sound effect for each incriment
+                PlaySoundEffect(SOUND_EFFECT_GEM_HIT_FLOOR, NULL, SOUND_PLAYBACK_MODE_NORMAL, 0);               //? Play sound effect for each incriment
             }
         }
 
@@ -82,7 +80,7 @@ void SelectSeed()
         if(_currentButton == SQUARE_BUTTON)                                                                     //? If the player is holding square
         {
             chosenSeed = rand() % 0xFFFF;                                                                       //? Set the seed to a random number between 0-32727 every frame    
-            PlaySoundEffect(SOUND_EFFECT_LIFE_CHEST_BLINK, 0, SOUND_PLAYBACK_MODE_NORMAL, 0);                   //? Play a sound effect for every randomization
+            PlaySoundEffect(SOUND_EFFECT_LIFE_CHEST_BLINK, NULL, SOUND_PLAYBACK_MODE_NORMAL, 0);                //? Play a sound effect for every randomization
         }
 
         //* Check if seed needs to be changed
@@ -237,8 +235,8 @@ int ReturnRandomGemOffset(void)
     {
         char fiveSidedDice = rand() % 5;    //?Set random number between 0-4. This represets each possible gem type. Red-Pink.
 
-        //? This code below checks the value of the fiveSidedDice, and also checks if its equivilent "amountOf____Gems" value has any gems left to redistrubute. 
-        //? If not, it re-rolls. If it does, it decreases the amount of specific gem type left to distrubted, and returns the offset from the dice.
+        //* This code below checks the value of the fiveSidedDice, and also checks if its equivilent "amountOf____Gems" value has any gems left to redistrubute. 
+        //* If not, it re-rolls. If it does, it decreases the amount of specific gem type left to distrubted, and returns the offset from the dice.
         if(amountOfGems.redGems && fiveSidedDice == 0)
         {
             amountOfGems.redGems--;
@@ -286,23 +284,23 @@ void UpdateFlags(void)
     //* This is the main statement that checks if it needs to do another run through of checking/setting gems 
     if(hasSeedChanged)                                                                                      
     {
-        hasParsedLevelGemData = FALSE;                                          //? Allow ParseGemData to run again once
-        hasReplacedLevelGems = FALSE;                                           //? Allow ReplaceGemData to run again once
+        hasParsedLevelGemData = FALSE;                                              //? Allow ParseGemData to run again once
+        hasReplacedLevelGems = FALSE;                                               //? Allow ReplaceGemData to run again once
     }
 
     //* If its the first seed, allow the first pass through of checking/setting gems.
     if(!hasRanFirstSeed)
     {
-        hasParsedLevelGemData = FALSE;                                          //? Allow ParseGemData to run once
-        hasReplacedLevelGems = FALSE;                                           //? Allow ParseGemData to run once
+        hasParsedLevelGemData = FALSE;                                              //? Allow ParseGemData to run once
+        hasReplacedLevelGems = FALSE;                                               //? Allow ParseGemData to run once
 
-        hasRanFirstSeed = TRUE;                                                 //? Never run this again
+        hasRanFirstSeed = TRUE;                                                     //? Never run this again
     }
 
     //* ~~Level Entry/Exit/Balloonist/Death Resets~~:
 
     //* This is the code that checks if you have died/re-entered a level, so that we can redistribute again once
-    if(!hasReplacedAfterEntry && (_glideSubState == 0x9 || _glideSubState == 0xA || _glideSubState == 0xB || _ballonistState == 0x6 || (_spyro.isMovementLocked != FALSE && _effect_ScreenFadeIn != 0)))
+    if(!hasReplacedAfterEntry && (_movementSubState == MOVEMENT_SUBSTATE_EXIT_PORTAL || _movementSubState == MOVEMENT_SUBSTATE_FLY_IN_LOOP || _movementSubState == MOVEMENT_SUBSTATE_FLY_IN_CAMERA_180 || _ballonistState == BALLOONIST_STATE_BALLOON_LOWERING || (_spyro.isMovementLocked == TRUE && _effect_ScreenFadeIn != 0)))
     {
         hasParsedLevelGemData = FALSE;
         hasReplacedLevelGems = FALSE;
@@ -311,8 +309,9 @@ void UpdateFlags(void)
     }
 
     //* This checks if you have fully re-entered the level, so that next time we have to redistribute we can
-    else if(_glideSubState != 0x9 && _glideSubState != 0xA && _glideSubState != 0xB && _gameState != GAMESTATE_BALLOONIST && (_spyro.isMovementLocked != FALSE && _effect_ScreenFadeIn == 0))
+    if(hasReplacedAfterEntry && _movementSubState != MOVEMENT_SUBSTATE_EXIT_PORTAL && _movementSubState != MOVEMENT_SUBSTATE_FLY_IN_LOOP && _movementSubState != MOVEMENT_SUBSTATE_FLY_IN_CAMERA_180 && _gameState != GAMESTATE_BALLOONIST && (_spyro.isMovementLocked == FALSE && _effect_ScreenFadeIn == 0))
     {
+        printf("TEST\n");
         hasReplacedAfterEntry = FALSE;
     }
 
