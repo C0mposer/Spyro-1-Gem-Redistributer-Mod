@@ -24,7 +24,7 @@ void init(){
         CdIntToPos(265759, &loc);               //? Converts the absolute sector number into the CdlLOC format
         CdControlB(CdlSeekL, (void *)&loc, 0);
         CdControlB(CdlSetloc, (void *)&loc, 0); //? Uses CdSetloc (0x02) to prepare for CdRead. This is required
-        CdRead(4, 0x80008BC0, 0x80);            //? Read 4 Sectors to the address 0x8000C000. 0x80 is the mode.
+        CdRead(4, 0x8000C000, 0x80);            //? Read 4 Sectors to the address 0x8000C000. 0x80 is the mode.
 
         CDIsLoading = 1;
     }
