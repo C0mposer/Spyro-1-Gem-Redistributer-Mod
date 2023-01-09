@@ -1,34 +1,11 @@
 #include <custom_types.h>
 #include <common.h>
+#include "GemRedistributer.h"
 #include <my_math.h>
 #include <spyro.h>
 #include <moby.h>
 #include <sound.h>
 #include <custom_text.h>
-
-//* ~~~ Global Flags ~~~
-
-bool hasParsedLevelGemData = FALSE;     //? This is the flag that determines if ParseLevelGemData can run.
-bool hasReplacedLevelGems = FALSE;      //? This is the flag that determines if ReplaceLevelGemData can run.
-bool hasSelectedSeed = FALSE;           //? This is the flag that determines if SelectSeed can run.
-bool hasSeedChanged = FALSE;            //? This flag determines if the seed has changed or not. If it has, it sets the main 2 function flags to be false to allow them to run again.
-bool hasRanFirstSeed = FALSE;           //? This flag determines if used to run the code once when you load in with seed 0, since it will have never been "changed"
-bool shouldPlayCutscene = FALSE;        //? This flag determines if PlayCustomCutscene can run.
-bool hasReplacedAfterEntry = FALSE;     //? This flag determines if the required flags have been set after dying/re-entering a level. Is used to make sure the code runs once afterwards.
-
-//* ~~~ Global Variables ~~~
-
-short chosenSeed = 0;                   //? This is the players chosen seed.
-
-char amountOfRedGems = 0;               //? This is the amount of red gems found in a level. This will be used for the redistribution.
-char amountOfGreenGems = 0;             //? This is the amount of green gems found in a level. This will be used for the redistribution.
-char amountOfBlueGems = 0;              //? This is the amount of blue gems found in a level. This will be used for the redistribution.
-char amountOfYellowGems = 0;            //? This is the amount of yellow gems found in a level. This will be used for the redistribution.
-char amountOfPinkGems = 0;              //? This is the amount of pink gems found in a level. This will be used for the redistribution.
-
-//int totalAmountOfPhysicalGems = 0;      //? This is the total amount of physical gems found in a level. This includes gems on the ground and in enemies/boxes.
-//int amountOfGemMobys = 0;               //? This is the total amount of gem mobys. This is only gems on the ground.
-//int amountOfHeldGems = 0;               //? This is the totla amount of moby's that hold gems.
 
 //* ~~~ Functions ~~~
 
@@ -37,7 +14,7 @@ void SelectSeed()
 {
         static int customMenuTimer = 0;                                                                         //? This is my custom timer for the seeding menu. Used for seeing how long you have held buttons for for quick incrementing/decrementing
 
-        _spyro.canInput = SPYRO_CANT_INPUT;                                                                     //? Set's spyro to not be allowed to move while the seed menu is up
+        _spyro.isMovementLocked = TRUE;                                                                         //? Set's spyro to not be allowed to move while the seed menu is up
 
         DrawTextBox(0x4c, 0x1a9, 0x40, 0xA8);                                                                   //? Draw the Textbox
 
@@ -150,27 +127,27 @@ void ParseGemData(void)
 
                 if(currentStruct->type == ONE_GEM_MOBY_ID)
                 {
-                    amountOfRedGems++;
+                    amountOfGems.redGems++;
                 }
       
                 if(currentStruct->type == TWO_GEM_MOBY_ID)
                 {
-                    amountOfGreenGems++;
+                    amountOfGems.greenGems++;
                 }
                
                 if(currentStruct->type == FIVE_GEM_MOBY_ID)
                 {
-                    amountOfBlueGems++;
+                    amountOfGems.blueGems++;
                 }
                
                 if(currentStruct->type == TEN_GEM_MOBY_ID)
                 {
-                    amountOfYellowGems++;
+                    amountOfGems.yellowGems++;
                 }
 
                 if(currentStruct->type == TWENTYFIVE_GEM_MOBY_ID)
                 {
-                    amountOfPinkGems++;
+                    amountOfGems.pinkGems++;
                 }
             }
             
@@ -182,34 +159,34 @@ void ParseGemData(void)
 
                if(currentStruct->heldValue == ONE_GEM_HELD_ID)
                 {
-                    amountOfRedGems++;
+                    amountOfGems.redGems++;
                 }
 
                 if(currentStruct->heldValue == TWO_GEM_HELD_ID)
                 {
-                    amountOfGreenGems++;
+                    amountOfGems.greenGems++;
                 }
   
                 if(currentStruct->heldValue == FIVE_GEM_HELD_ID)
                 {
-                    amountOfBlueGems++;
+                    amountOfGems.blueGems++;
                 }
                 
                 if(currentStruct->heldValue == TEN_GEM_HELD_ID)
                 {
-                    amountOfYellowGems++;
+                    amountOfGems.yellowGems++;
                 }
 
                 if(currentStruct->heldValue == TWENTYFIVE_GEM_HELD_ID)
                 {
-                    amountOfPinkGems++;
+                    amountOfGems.pinkGems++;
                 }
             }
         }
 
         //* Debug Printing
 
-        //printf("Amount of Total Physical Gems: %D\n\nAmount of Gem Mobys: %D\n\nAmount of Held Gems: %D\n\nAmount of One Gems: %D\nAmount of Two Gems: %D\nAmount of Five Gems: %D\nAmount of Ten Gems: %D\nAmount of Twenty Five Gems: %D\n\n", totalAmountOfPhysicalGems, amountOfGemMobys, amountOfHeldGems, amountOfRedGems, amountOfGreenGems, amountOfBlueGems, amountOfYellowGems, amountOfPinkGems); 
+        //printf("Amount of Total Physical Gems: %D\n\nAmount of Gem Mobys: %D\n\nAmount of Held Gems: %D\n\nAmount of One Gems: %D\nAmount of Two Gems: %D\nAmount of Five Gems: %D\nAmount of Ten Gems: %D\nAmount of Twenty Five Gems: %D\n\n", totalAmountOfPhysicalGems, amountOfGemMobys, amountOfHeldGems, amountOfGems.redGems, amountOfGems.greenGems, amountOfGems.blueGems, amountOfGems.yellowGems, amountOfGems.pinkGems); 
         //amountOfGemMobys = 0;
         //amountOfHeldGems = 0;
         //totalAmountOfPhysicalGems = 0; 
@@ -245,7 +222,7 @@ void ReplaceGemData(void)
                 
         //* Removed Debug
 
-        //printf("~~~ TEST TO SEE IF REPLACED ALL ~~~\nOne Gems Left to Replace: %D\nTwo Gems Left to Replace: %D\nFive Gems Left to Replace: %D\nTen Gems Left to Replace: %D\nTwenty Five Gems Left to Replace: %D\n", amountOfRedGems, amountOfGreenGems, amountOfBlueGems, amountOfYellowGems, amountOfPinkGems); 
+        //printf("~~~ TEST TO SEE IF REPLACED ALL ~~~\nOne Gems Left to Replace: %D\nTwo Gems Left to Replace: %D\nFive Gems Left to Replace: %D\nTen Gems Left to Replace: %D\nTwenty Five Gems Left to Replace: %D\n", amountOfGems.redGems, amountOfGems.greenGems, amountOfGems.blueGems, amountOfGems.yellowGems, amountOfGems.pinkGems); 
 
         hasReplacedLevelGems = TRUE;
 }
@@ -262,33 +239,33 @@ int ReturnRandomGemOffset(void)
 
         //? This code below checks the value of the fiveSidedDice, and also checks if its equivilent "amountOf____Gems" value has any gems left to redistrubute. 
         //? If not, it re-rolls. If it does, it decreases the amount of specific gem type left to distrubted, and returns the offset from the dice.
-        if(amountOfRedGems && fiveSidedDice == 0)
+        if(amountOfGems.redGems && fiveSidedDice == 0)
         {
-            amountOfRedGems--;
+            amountOfGems.redGems--;
             hasFoundAvailbleGem = TRUE;
         }
 
-        if(amountOfGreenGems && fiveSidedDice == 1)
+        if(amountOfGems.greenGems && fiveSidedDice == 1)
         {
-            amountOfGreenGems--;
+            amountOfGems.greenGems--;
             hasFoundAvailbleGem = TRUE;
         }
 
-        if(amountOfBlueGems && fiveSidedDice == 2)
+        if(amountOfGems.blueGems && fiveSidedDice == 2)
         {
-            amountOfBlueGems--;
+            amountOfGems.blueGems--;
             hasFoundAvailbleGem = TRUE;
         }
 
-        if(amountOfYellowGems && fiveSidedDice == 3)
+        if(amountOfGems.yellowGems && fiveSidedDice == 3)
         {
-            amountOfYellowGems--;
+            amountOfGems.yellowGems--;
             hasFoundAvailbleGem = TRUE;
         }
 
-        if(amountOfPinkGems && fiveSidedDice == 4)
+        if(amountOfGems.pinkGems && fiveSidedDice == 4)
         {
-            amountOfPinkGems--;
+            amountOfGems.pinkGems--;
             hasFoundAvailbleGem = TRUE;
 
         }
@@ -325,7 +302,7 @@ void UpdateFlags(void)
     //* ~~Level Entry/Exit/Balloonist/Death Resets~~:
 
     //* This is the code that checks if you have died/re-entered a level, so that we can redistribute again once
-    if(!hasReplacedAfterEntry && (_glideSubState == 0x9 || _glideSubState == 0xA || _glideSubState == 0xB || _ballonistState == 0x6 || (_spyro.canInput != 0 && _effect_ScreenFadeIn != 0)))
+    if(!hasReplacedAfterEntry && (_glideSubState == 0x9 || _glideSubState == 0xA || _glideSubState == 0xB || _ballonistState == 0x6 || (_spyro.isMovementLocked != FALSE && _effect_ScreenFadeIn != 0)))
     {
         hasParsedLevelGemData = FALSE;
         hasReplacedLevelGems = FALSE;
@@ -334,7 +311,7 @@ void UpdateFlags(void)
     }
 
     //* This checks if you have fully re-entered the level, so that next time we have to redistribute we can
-    else if(_glideSubState != 0x9 && _glideSubState != 0xA && _glideSubState != 0xB && _gameState != GAMESTATE_BALLOONIST && (_spyro.canInput == 0 && _effect_ScreenFadeIn == 0))
+    else if(_glideSubState != 0x9 && _glideSubState != 0xA && _glideSubState != 0xB && _gameState != GAMESTATE_BALLOONIST && (_spyro.isMovementLocked != FALSE && _effect_ScreenFadeIn == 0))
     {
         hasReplacedAfterEntry = FALSE;
     }

@@ -3,9 +3,6 @@
 
 #include "common.h"
 
-#define SPYRO_CAN_INPUT 0               //used for Spyro.canInput
-#define SPYRO_CANT_INPUT 1
-
 typedef struct Spyro
 {
 
@@ -183,7 +180,7 @@ int unkown39;
 int maybe_tailRelated;
 int maybe_chargeTimerRelated;
 
-int canInput;                                               //? Value for if spyro can input or not. Counts down from any value to 0 every frame if not set every frame to a value manually.
+int isMovementLocked;                               //? Value for if spyro can input or not. Counts down from any value to 0 every frame if not set every frame to a value manually.
 
 int maybe_weirdResearchThis;
 

@@ -394,4 +394,6 @@ extern int _headAndChestSpinTimer; //0x80077fe4
 extern int _unk_spinRelated; //0x8006cc78
 extern char* _localSoundEffects; //0x800761D4
 
+extern char _freeSpace[0xE5F]; //0x80073990                 //? This is almost 1kb of free space in the game
+
 #endif /* COMMON_H */

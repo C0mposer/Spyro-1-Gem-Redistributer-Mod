@@ -51,7 +51,7 @@ bool PlayCustomCutscene(void)
     //* Cutscene Animation Loop
     if (shouldMoveCamera)
     {       
-        _spyro.canInput = SPYRO_CANT_INPUT;                                                                                     //? Forces the player to not be able to move spyro
+        _spyro.isMovementLocked = TRUE;                                                                                     //? Forces the player to not be able to move spyro
 
         _shouldCameraFollowSpyro = DONT_FOLLOW_SPYRO;                                                                           //? NOP's the call to SpyroCamera() to allow the camera to be free
 
@@ -134,7 +134,7 @@ bool PlayCustomCutscene(void)
                 customDirection = 0;                                                                                //? Resets Direction. Shouldn't matter since it only runs once though
                 shouldMoveCamera = FALSE;                                                                           //? Sets the shouldMoveCamera flag to FALSE to stop the animation loop from running
                 hasSavedCameraData = FALSE;                                                                         //? Sets the hasSavedCameraData flag to FALSE. Shouldn't matter since it only runs once
-                _spyro.canInput = SPYRO_CAN_INPUT;                                                                  //? Allows the player to input again
+                _spyro.isMovementLocked = FALSE;                                                                  //? Allows the player to input again
                 _shouldCameraFollowSpyro = FOLLOW_SPYRO;                                                            //? UN-NOP's the call to SpyroCamera() to allow the camera to follow spyro again
                 hasFinished = TRUE;
             }
