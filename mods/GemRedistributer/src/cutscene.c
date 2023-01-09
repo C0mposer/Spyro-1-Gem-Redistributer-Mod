@@ -6,11 +6,11 @@
 #include <custom_text.h>
 #include <moby.h>
 #include <sound.h>
-#include <GemRedistributer.h>
+
 
 
 //* Globals from GemRedistributer.h
-extern unsigned short chosenSeed;
+extern short chosenSeed;
 extern bool hasSeedChanged;
 
 
